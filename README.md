@@ -52,4 +52,4 @@ utterances from two speakers, respectively. 1,572 utterances in training set are
 We compare Lite-RTSE with DCCRN and [DPCRN-CF](https://arxiv.org/abs/2306.00812). The results of DCCRN are provided in [S-DCCRN](https://ieeexplore.ieee.org/abstract/document/9747029) paper, and the results of DPCRN-CF are provided in its original paper. The results show that Lite-RTSE outperforms DCCRN while significantly falls behind DPCRN-CF.
 
 ## Declaration
-Considering the aforementioned modifications, our implementation may differ significantly from the original Lite-RTSE. We are uncertain if our version fully aligns with the paper. Please inform us of any errors or discrepancies in our implementation.
+Considering the aforementioned modifications, our implementation may differ from the original Lite-RTSE. We are uncertain if our version fully aligns with the paper. Please inform us of any errors or discrepancies in our implementation.
