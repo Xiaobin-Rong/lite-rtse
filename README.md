@@ -23,7 +23,7 @@ In my view, the contributions of Lite-RTSE are as follows:
 * A novel spectrum compensation mechanism for both magnitude and phase.
 
 ## Issues
-There are several issues as follows:
+Upon reviewing the paper, we have several issues as follows:
 * Does the Conv-Block in Fig. 1 correspond to the multi-scale block mentioned in the paper?
 * Is there only one activation function and no batch normalization (BN) applied in the network, as implied by Fig. 1, which is unusual for DNN design?
 * How can the outputs from multi-order block $\tilde{Z}$ be concatenated with $|Y|$ and $|\hat{S_1|}$, considering $\tilde{Z}$ has 64 channels while both $|Y|$ and $|\hat{S_1|}$ have only one channel?
@@ -34,12 +34,12 @@ There are several issues as follows:
 ### Setup
 We make some modification as follows:
 * change the output channels of Multi-Order Conv-Block from $C$ to $1$, so that the output can be concatenated with other two features;
-* use depth-wise convolution instead of standard convolution for the 3x3 convolutional layer in Conv-Block. We observe loss divergence when using Conv-Block, and adding BN or employ depth-wise convolution can alleviate this issue. We choose the latter for its significant computational reduction.
+* use depth-wise convolution instead of standard convolution in the 3x3 convolutional layer in Conv-Block. We observe loss divergence when using Conv-Block, and adding BN or employing depth-wise convolution can alleviate this issue. We choose the latter for its significant computational reduction.
 
 The final version of Lite-RTSE has **1.56 M** parameters and **0.66 GFLOPs**. 
 
 ### Datasets
-We evaluate Lite-RTSE using two datasets on the **VCTK-DEMAND** dataset, which contains paired clean and pre-mixed noisy speech. The training and test set consist of 11,572 utterances from 28 speakers and 872
+We evaluate Lite-RTSE on the **VCTK-DEMAND** dataset, which contains paired clean and pre-mixed noisy speech. The training and test set consist of 11,572 utterances from 28 speakers and 872
 utterances from two speakers, respectively. 1,572 utterances in training set are selected for validation. The utterances are resampled to 16 kHz.
 
 ## Results
@@ -49,7 +49,7 @@ utterances from two speakers, respectively. 1,572 utterances in training set are
 | **Lite-RTSE**| 1.56        | 0.66          | **18.4**  | 2.67     | 0.936    |
 | **DPCRN-CF** | **0.43**    | **0.3**       | **18.4**  | **3.18** | **0.948**|
 
-We compare Lite-RTSE with DCCRN and [DPCRN-CF](https://arxiv.org/abs/2306.00812). The results of DCCRN are provided in [S-DCCRN](https://ieeexplore.ieee.org/abstract/document/9747029) paper, and the results of DPCRN-CF are provided in the DPCRN-CF paper. The results show that Lite-RTSE outperforms DCCRN while significantly falls behind DPCRN-CF.
+We compare Lite-RTSE with DCCRN and [DPCRN-CF](https://arxiv.org/abs/2306.00812). The results of DCCRN are provided in [S-DCCRN](https://ieeexplore.ieee.org/abstract/document/9747029) paper, and the results of DPCRN-CF are provided in its original paper. The results show that Lite-RTSE outperforms DCCRN while significantly falls behind DPCRN-CF.
 
 ## Declaration
 Considering the aforementioned modifications, our implementation may differ significantly from the original Lite-RTSE. We are uncertain if our version fully aligns with the paper. Please inform us of any errors or discrepancies in our implementation.
